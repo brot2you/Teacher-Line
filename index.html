@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teacher Line · les outils BROT2YOU pour profs d’anglais</title>
+<meta name="description" content="Toutes les applis BROT2YOU pour profs d’anglais, rangées par ligne : concevoir, animer et évaluer, ressources, inclusion, se former.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='26' width='56' height='12' rx='6' fill='%23DC241F'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23fff' stroke='%2313203F' stroke-width='7'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#E7EBF0;
+  --tile:rgba(255,255,255,.55);
+  --surface:#FFFFFF;
+  --surface-2:#F4F6F9;
+  --ink:#13203F;
+  --muted:#4E5A72;
+  --rule:#C8D0DA;
+  --bar:#13203F;
+  --bar-ink:#FFFFFF;
+  --focus:#F2A900;
+  --c-concevoir:#DC241F;
+  --c-animer:#1E3FB8;
+  --c-ressources:#00782A;
+  --c-inclusion:#9B0058;
+  --c-former:#F2A900;
+  --c-favoris:#13203F;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1528;
+    --tile:rgba(255,255,255,.025);
+    --surface:#172038;
+    --surface-2:#1D2843;
+    --ink:#E9EDF5;
+    --muted:#A2ADC4;
+    --rule:#2C3858;
+    --bar:#080D1C;
+    --bar-ink:#FFFFFF;
+    --c-animer:#4A6CF0;
+    --c-ressources:#1FA34E;
+    --c-inclusion:#D0347F;
+    --c-favoris:#E9EDF5;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1528;
+  --tile:rgba(255,255,255,.025);
+  --surface:#172038;
+  --surface-2:#1D2843;
+  --ink:#E9EDF5;
+  --muted:#A2ADC4;
+  --rule:#2C3858;
+  --bar:#080D1C;
+  --bar-ink:#FFFFFF;
+  --c-animer:#4A6CF0;
+  --c-ressources:#1FA34E;
+  --c-inclusion:#D0347F;
+  --c-favoris:#E9EDF5;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  font-family:"Overpass","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  font-size:16px;line-height:1.5;color:var(--ink);
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(var(--tile) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tile) 1px, transparent 1px);
+  background-size:48px 24px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bar)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Top bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar);color:var(--bar-ink)}
+.bar-in{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;margin-right:auto}
+.brand-mark{width:44px;height:26px;flex:none}
+.brand-name{font-weight:900;font-size:21px;letter-spacing:-.01em;line-height:1}
+.brand-sub{display:block;font-weight:600;font-size:12px;opacity:.72;margin-top:3px;letter-spacing:.01em}
+.search{position:relative;flex:1 1 280px;max-width:420px}
+.search input{
+  width:100%;font:inherit;font-size:15px;color:#13203F;background:#fff;border:0;border-radius:999px;
+  padding:10px 44px 10px 40px;
+}
+.search input::placeholder{color:#66708A}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:#66708A;pointer-events:none}
+.search kbd{position:absolute;right:12px;top:50%;transform:translateY(-50%);font:600 12px/1 "Overpass",sans-serif;color:#66708A;border:1px solid #C8D0DA;border-radius:5px;padding:4px 7px 3px}
+.theme-btn{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.28);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center}
+.theme-btn svg{width:18px;height:18px}
+
+/* ---------- Hero / network map ---------- */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.hero{padding:44px 0 8px}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.02;font-weight:900;letter-spacing:-.025em;margin:0 0 12px;max-width:16ch}
+.hero p{margin:0;color:var(--muted);font-size:18px;max-width:58ch}
+.map-shell{margin-top:30px;background:var(--surface);border:1px solid var(--rule);border-radius:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.map{min-width:860px;padding:22px 26px 10px}
+.mline{display:grid;grid-template-columns:190px 1fr;align-items:start;gap:18px;margin-bottom:14px}
+.mline-label{
+  justify-self:start;margin-top:4px;font:800 14px/1 "Overpass",sans-serif;border:0;cursor:pointer;
+  background:var(--lc);color:#fff;padding:8px 13px 6px;border-radius:999px;white-space:nowrap
+}
+.mline-label.on-light{color:#13203F}
+.track{position:relative;display:flex;justify-content:space-between;padding:0 6px}
+.track::before{
+  content:"";position:absolute;left:0;right:0;top:11px;height:8px;border-radius:4px;background:var(--lc);
+  transform-origin:left center;animation:draw .9s cubic-bezier(.6,.05,.2,1) both;animation-delay:var(--d,0s)
+}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.track::before{animation:none}}
+.mstop{position:relative;flex:1 1 0;display:flex;flex-direction:column;align-items:center;text-align:center;border:0;background:none;color:var(--ink);cursor:pointer;padding:0 4px 8px;font:inherit}
+.mstop .dot{width:30px;height:30px;border-radius:50%;background:var(--surface);border:6px solid var(--lc);position:relative;z-index:1;transition:transform .15s}
+.mstop:hover .dot,.mstop:focus-visible .dot{transform:scale(1.18)}
+.mstop .nm{margin-top:7px;font-size:13px;font-weight:700;line-height:1.2;max-width:15ch}
+.mstop.dim{opacity:.25}
+.map-legend{display:none;gap:18px;flex-wrap:wrap;padding:6px 26px 18px;color:var(--muted);font-size:13px}
+
+/* ---------- Filter strip ---------- */
+.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 4px}
+.filters .lbl{font-weight:700;font-size:14px;color:var(--muted);margin-right:4px}
+.chip{font:600 14px/1 "Overpass",sans-serif;padding:9px 14px 7px;border-radius:999px;border:2px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.count{margin-left:auto;color:var(--muted);font-size:14px}
+
+/* ---------- Lines (sections) ---------- */
+.line{margin-top:40px}
+.line-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.line-badge{width:48px;height:48px;border-radius:50%;background:var(--lc);color:#fff;display:grid;place-items:center;flex:none}
+.line-badge.on-light{color:#13203F}
+.line-badge svg{width:24px;height:24px}
+.line-head h2{margin:0;font-size:26px;font-weight:900;letter-spacing:-.015em;line-height:1.1}
+.line-head p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.route{position:relative;padding-left:52px;list-style:none;margin:0}
+.route::before{content:"";position:absolute;left:20px;top:14px;bottom:14px;width:8px;border-radius:4px;background:var(--lc)}
+.line.fav .route::before{background:repeating-linear-gradient(180deg,var(--lc) 0 14px,transparent 14px 22px)}
+.stop{
+  position:relative;display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;
+  background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:16px 16px 16px 20px;margin-bottom:10px;
+  transition:box-shadow .3s, border-color .3s
+}
+.stop::before{content:"";position:absolute;left:-41px;top:50%;margin-top:-12px;width:24px;height:24px;border-radius:50%;background:var(--surface);border:6px solid var(--lc)}
+.stop.flash{border-color:var(--lc);box-shadow:0 0 0 4px var(--lc)}
+.stop h3{margin:0;font-size:19px;font-weight:800;line-height:1.2;letter-spacing:-.005em}
+.stop h3 a{text-decoration:none}
+.stop h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.stop p{margin:3px 0 0;color:var(--muted);font-size:15px;max-width:68ch}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:12px;font-weight:700;line-height:1;padding:5px 8px 3px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--rule)}
+.tag.ai{background:#FFF1C9;color:#6B4A00;border-color:#EBCB72}
+:root[data-theme="dark"] .tag.ai{background:#3A2F10;color:#F5D57A;border-color:#6B5520}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.ai{background:#3A2F10;color:#F5D57A;border-color:#6B5520}}
+.acts{display:flex;align-items:center;gap:8px}
+.star{width:40px;height:40px;border-radius:50%;border:2px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.star svg{width:18px;height:18px}
+.star[aria-pressed="true"] svg{fill:currentColor}
+.star[aria-pressed="true"]{color:#C98A00;border-color:#E9B949;background:#FFF6DC}
+:root[data-theme="dark"] .star[aria-pressed="true"]{background:#3A2F10}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .star[aria-pressed="true"]{background:#3A2F10}}
+.go{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:15px;padding:10px 16px 8px;border-radius:999px;background:var(--lc);color:#fff;white-space:nowrap}
+.go.on-light{color:#13203F}
+.go svg{width:14px;height:14px;margin-top:-2px}
+.go:hover{filter:brightness(1.08)}
+.empty{margin:40px 0;padding:28px;border:2px dashed var(--rule);border-radius:14px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--ink);font-size:18px;margin-bottom:4px}
+.empty button{margin-top:12px}
+
+/* ---------- Footer ---------- */
+.foot{margin-top:64px;background:var(--bar);color:#fff}
+.foot-in{max-width:1100px;margin:0 auto;padding:30px 20px 36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.foot h4{margin:0 0 6px;font-size:16px;font-weight:800}
+.foot p{margin:0;font-size:14px;opacity:.78;max-width:42ch}
+.foot a{color:#fff;font-weight:700}
+
+@media (max-width:640px){
+  .hero{padding-top:28px}
+  .hero p{font-size:16px}
+  .search kbd{display:none}
+  .map-legend{display:flex}
+  .stop{grid-template-columns:1fr;padding:14px}
+  .acts{justify-content:space-between}
+  .route{padding-left:42px}
+  .route::before{left:15px;width:7px}
+  .stop::before{left:-36px;width:22px;height:22px;margin-top:-11px;border-width:5px}
+  .count{margin-left:0;width:100%}
+  .line-head h2{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top" aria-label="Teacher Line, retour en haut">
+      <svg class="brand-mark" viewBox="0 0 44 26" aria-hidden="true">
+        <rect x="0" y="9" width="44" height="8" rx="4" fill="#DC241F"/>
+        <circle cx="22" cy="13" r="10" fill="#fff" stroke="#fff" stroke-width="0"/>
+        <circle cx="22" cy="13" r="7" fill="none" stroke="#13203F" stroke-width="5"/>
+      </svg>
+      <span><span class="brand-name">Teacher Line</span><span class="brand-sub">par BROT2YOU</span></span>
+    </a>
+    <label class="search">
+      <span class="sr">Rechercher un outil</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="Chercher : séquence, dys, culture…" autocomplete="off">
+      <kbd aria-hidden="true">/</kbd>
+    </label>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Changer de thème clair ou sombre">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <h1>Tous vos outils de prof d’anglais, sur un seul plan.</h1>
+    <p>Chaque ligne regroupe une étape du métier : préparer, faire classe, trouver des ressources, adapter, se former. Cliquez sur une station pour y aller.</p>
+
+    <div class="map-shell" role="region" aria-label="Plan du réseau des outils" tabindex="0">
+      <div class="map" id="map"></div>
+      <div class="map-legend"><span>Faites glisser le plan sur mobile</span></div>
+    </div>
+  </section>
+
+  <div class="filters" role="group" aria-label="Filtrer les outils">
+    <span class="lbl">Afficher</span>
+    <button class="chip" type="button" data-mode="all" aria-pressed="true">Tous les outils</button>
+    <button class="chip" type="button" data-mode="noai" aria-pressed="false">Sans IA</button>
+    <button class="chip" type="button" data-mode="ai" aria-pressed="false">Avec IA</button>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+
+  <div id="lines"></div>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <h4>Teacher Line</h4>
+      <p>Des outils gratuits, sans inscription, pensés en classe. Les données restent dans votre navigateur.</p>
+    </div>
+    <div>
+      <h4>Côté élèves</h4>
+      <p>Les applis pour les collégiens sont rangées dans <a href="https://brot2you.github.io/Sac-Ados/" target="_blank" rel="noopener">Sac’Ados</a>.</p>
+    </div>
+    <div>
+      <h4>Articles et tutos</h4>
+      <p>Chaque outil est présenté sur <a href="https://brot2you.github.io/BROT2YOU-the-blog/" target="_blank" rel="noopener">le blog BROT2YOU</a>. Vos retours sont les bienvenus.</p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="data">
+{
+  "lines": [
+    {"id":"concevoir","name":"Concevoir","desc":"Bâtir séquences et séances à partir du programme 2025.","icon":"compass"},
+    {"id":"animer","name":"Animer & évaluer","desc":"Faire vivre la classe et suivre les progrès.","icon":"spark"},
+    {"id":"ressources","name":"Ressources & culture","desc":"Trouver des supports et des repères didactiques.","icon":"book"},
+    {"id":"inclusion","name":"Inclusion & bien-être","desc":"Adapter pour chaque élève, au-delà de l’anglais.","icon":"heart"},
+    {"id":"former","name":"Se former","desc":"Pour les stagiaires, les étudiants MEEF et leurs tuteurs.","icon":"cap"}
+  ],
+  "tools": [
+    {"id":"fabrique","line":"concevoir","name":"Fabrique de Séances","short":"Fabrique de Séances","desc":"Construire une séance phase par phase en piochant activités, jeux, théâtre et modalités de classe flexible.","url":"https://brot2you.github.io/Fabrique-de-Seances/","tags":["Collège","Séance"]},
+    {"id":"seqstudio","line":"concevoir","name":"Sequence Studio","short":"Sequence Studio","desc":"Concevoir une séquence d’anglais complète, de la problématique à la tâche finale.","url":"https://brot2you.github.io/Sequence-studio/","tags":["Séquence"]},
+    {"id":"englishseq","line":"concevoir","name":"The English Sequence","short":"The English Sequence","desc":"Générer une séquence alignée sur les programmes 2025 : axes, tâches intermédiaires, supports, CPS et parcours.","url":"https://teach-sequence-maker.lovable.app/","tags":["IA","Collège","Lycée","Séquence"]},
+    {"id":"rebours","line":"concevoir","name":"À rebours","short":"À rebours","desc":"Partir de ce que les élèves sauront faire en fin de séquence et remonter jusqu’aux séances.","url":"https://claude.ai/artifact/T6uLcVe1K3qjpqX7paBPMj","tags":["Séquence","Backward design"]},
+    {"id":"planning","line":"concevoir","name":"Planning Assistant","short":"Planning Assistant","desc":"Cocher repères culturels, lexique, faits de langue et compétences du BO 2025, puis imprimer sa fiche séquence.","url":"https://brot2you.github.io/Planning-Assistant/","tags":["Collège","BO 2025"]},
+
+    {"id":"plan","line":"animer","name":"Plan de classe","short":"Plan de classe","desc":"Placer tables en îlots, duos ou rangées, glisser les élèves avec leur photo, gérer plusieurs classes et imprimer.","url":"https://brot2you.github.io/Plan-de-classe/","tags":["Toutes matières","Smartphone"]},
+    {"id":"jars","line":"animer","name":"Class Reward Jars","short":"Reward Jars","desc":"Remplir des jarres d’étoiles collectives pour valoriser les bonnes actions de la classe.","url":"https://brot2you.github.io/Class-Reward-Jar/","tags":["Gestion de classe","TNI"]},
+    {"id":"studio","line":"animer","name":"BROT2YOU Studio","short":"BROT2YOU Studio","desc":"Fabriquer ses jeux de classe en quelques minutes : roue, cartes, quiz à projeter.","url":"https://brot2you.github.io/Brot2you-Studio/#/","tags":["Jeux","TNI"]},
+    {"id":"skillpop","line":"animer","name":"Skillpop","short":"Skillpop","desc":"Évaluer par compétences et suivre le profil de chaque élève sous forme de radar.","url":"https://brot2you.github.io/Skillpop/","tags":["Évaluation","CECRL"]},
+
+    {"id":"culture","line":"ressources","name":"Culture Corner","short":"Culture Corner","desc":"Plus de 1 100 ressources culturelles classées par niveau, de la 6e à la terminale, et par axe du programme.","url":"https://brot2you.github.io/Culture-Corner/","tags":["Collège","Lycée","Culture"]},
+    {"id":"didalangues","line":"ressources","name":"DidaLangues","short":"DidaLangues","desc":"Plus de 100 fiches de didactique : approches, activités langagières, auteurs clés, évaluation, numérique.","url":"https://brot2you.github.io/DidaLangues/","tags":["Didactique","MEEF"]},
+    {"id":"docadida","line":"ressources","name":"Docadida sur Pearltrees","short":"Docadida","desc":"Une collection de ressources pour didactiser un document authentique, rangée sur Pearltrees.","url":"https://www.pearltrees.com/t/anglais/docadida-ressources-didactiser/id39113460","tags":["Externe","Didactique"]},
+
+    {"id":"dyscollege","line":"inclusion","name":"DysCollège","short":"DysCollège","desc":"8 profils dys et 8 disciplines, plus de 300 conseils sourcés et un adaptateur de texte en direct.","url":"https://brot2you.github.io/Dys-College/","tags":["Toutes matières","Dys"]},
+    {"id":"dyscompagnon","line":"inclusion","name":"DysCompagnon","short":"DysCompagnon","desc":"Fiches conseils filtrables, adaptateur de texte, assistant IA et suivi des aménagements par élève.","url":"https://eleves-dys-brot2you.lovable.app/","tags":["IA","Toutes matières","Dys"]},
+    {"id":"evars","line":"inclusion","name":"EVARS Companion","short":"EVARS Companion","desc":"Croiser les axes du programme et les objectifs EVARS, discipline par discipline.","url":"https://brot2you.github.io/Evars-Companion/","tags":["Interdisciplinaire","EVARS"]},
+
+    {"id":"meef","line":"former","name":"Compagnon MEEF","short":"Compagnon MEEF","desc":"Un assistant de didactique de l’anglais pour les étudiants MEEF : programmes collège et lycée, préparation au CAPES.","url":"https://didactics-ai-coach.lovable.app/","tags":["IA","MEEF","CAPES"]},
+    {"id":"stagiaires","line":"former","name":"Boîte à outils stagiaires","short":"Boîte à outils","desc":"L’essentiel pour démarrer l’année quand on débute comme professeur d’anglais.","url":"https://brot2you.github.io/Boite-outils-stagiaires/","tags":["Stagiaires","Tutorat"]}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = JSON.parse(document.getElementById("data").textContent);
+  var FAV_KEY = "teacherline-favs";
+  var THEME_KEY = "teacherline-theme";
+  var LIGHT_LINES = { former: true };
+
+  var ICONS = {
+    compass: '<path d="M4 20l4-1L19 8l-3-3L5 16zM14 7l3 3"/>',
+    spark: '<path d="M12 3l2.2 5.6L20 9.5l-4.5 3.9 1.4 5.8L12 16.1 7.1 19.2l1.4-5.8L4 9.5l5.8-.9z"/>',
+    book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>',
+    heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+    cap: '<path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
+    star: '<path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/>'
+  };
+  var EXT = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 2h5v5M14 2L7 9"/></svg>';
+
+  function svgIcon(name){
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || "") + '</svg>';
+  }
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function norm(s){
+    s = String(s).toLowerCase();
+    if (s.normalize) { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+    return s;
+  }
+  function lineVar(id){ return "var(--c-" + id + ")"; }
+
+  /* ---------- storage ---------- */
+  var favs = [];
+  try { favs = JSON.parse(localStorage.getItem(FAV_KEY) || "[]") || []; } catch (e) { favs = []; }
+  function saveFavs(){ try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch (e) {} }
+  function isFav(id){ return favs.indexOf(id) !== -1; }
+
+  var lineById = {};
+  for (var i = 0; i < DATA.lines.length; i++) { lineById[DATA.lines[i].id] = DATA.lines[i]; }
+  var toolById = {};
+  for (var j = 0; j < DATA.tools.length; j++) {
+    var t = DATA.tools[j];
+    toolById[t.id] = t;
+    t._hay = norm(t.name + " " + t.desc + " " + t.tags.join(" ") + " " + lineById[t.line].name);
+    t._ai = t.tags.indexOf("IA") !== -1;
+  }
+
+  /* ---------- state ---------- */
+  var state = { q: "", mode: "all" };
+
+  function matches(t){
+    if (state.mode === "ai" && !t._ai) { return false; }
+    if (state.mode === "noai" && t._ai) { return false; }
+    if (!state.q) { return true; }
+    var words = norm(state.q).split(/\s+/);
+    for (var k = 0; k < words.length; k++) {
+      if (words[k] && t._hay.indexOf(words[k]) === -1) { return false; }
+    }
+    return true;
+  }
+
+  /* ---------- network map ---------- */
+  function renderMap(){
+    var html = "";
+    for (var i = 0; i < DATA.lines.length; i++) {
+      var L = DATA.lines[i];
+      var light = LIGHT_LINES[L.id] ? " on-light" : "";
+      html += '<div class="mline" style="--lc:' + lineVar(L.id) + '">';
+      html += '<button type="button" class="mline-label' + light + '" data-goto-line="' + L.id + '">' + esc(L.name) + '</button>';
+      html += '<div class="track" style="--d:' + (i * 0.12) + 's">';
+      for (var j = 0; j < DATA.tools.length; j++) {
+        var t = DATA.tools[j];
+        if (t.line !== L.id) { continue; }
+        html += '<button type="button" class="mstop" data-goto-stop="' + t.id + '" aria-label="Aller à ' + esc(t.name) + '">' +
+                '<span class="dot"></span><span class="nm">' + esc(t.short) + '</span></button>';
+      }
+      html += '</div></div>';
+    }
+    document.getElementById("map").innerHTML = html;
+  }
+
+  function dimMap(){
+    var stops = document.querySelectorAll(".mstop");
+    for (var i = 0; i < stops.length; i++) {
+      var t = toolById[stops[i].getAttribute("data-goto-stop")];
+      if (matches(t)) { stops[i].className = "mstop"; } else { stops[i].className = "mstop dim"; }
+    }
+  }
+
+  /* ---------- stops ---------- */
+  function stopHTML(t, lineId, prefix){
+    var light = LIGHT_LINES[lineId] ? " on-light" : "";
+    var tags = "";
+    for (var i = 0; i < t.tags.length; i++) {
+      var tg = t.tags[i];
+      tags += '<span class="tag' + (tg === "IA" ? " ai" : "") + '">' + (tg === "IA" ? "IA, connexion requise" : esc(tg)) + '</span>';
+    }
+    var fav = isFav(t.id);
+    return '<li class="stop" id="' + prefix + t.id + '" style="--lc:' + lineVar(lineId) + '">' +
+      '<div><h3><a href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(t.name) + '</a></h3>' +
+      '<p>' + esc(t.desc) + '</p><div class="tags">' + tags + '</div></div>' +
+      '<div class="acts">' +
+        '<button type="button" class="star" data-fav="' + t.id + '" aria-pressed="' + (fav ? "true" : "false") + '" aria-label="' + (fav ? "Retirer " : "Ajouter ") + esc(t.name) + (fav ? " de mes favoris" : " à mes favoris") + '">' + svgIcon("star") + '</button>' +
+        '<a class="go' + light + '" href="' + esc(t.url) + '" target="_blank" rel="noopener">Ouvrir ' + EXT + '<span class="sr"> ' + esc(t.name) + ' dans un nouvel onglet</span></a>' +
+      '</div></li>';
+  }
+
+  function render(){
+    var html = "";
+    var shown = 0;
+
+    var favTools = [];
+    for (var f = 0; f < favs.length; f++) {
+      var ft = toolById[favs[f]];
+      if (ft && matches(ft)) { favTools.push(ft); }
+    }
+    if (favTools.length) {
+      html += '<section class="line fav" id="line-favoris" style="--lc:var(--c-favoris)">' +
+        '<div class="line-head"><div class="line-badge" style="--lc:var(--c-favoris);color:var(--bg)">' + svgIcon("star") + '</div>' +
+        '<div><h2>Ma ligne</h2><p>Vos outils favoris, pour y aller sans détour.</p></div></div><ol class="route">';
+      for (var a = 0; a < favTools.length; a++) { html += stopHTML(favTools[a], favTools[a].line, "fav-"); }
+      html += '</ol></section>';
+    }
+
+    for (var i = 0; i < DATA.lines.length; i++) {
+      var L = DATA.lines[i];
+      var list = "";
+      var n = 0;
+      for (var j = 0; j < DATA.tools.length; j++) {
+        var t = DATA.tools[j];
+        if (t.line === L.id && matches(t)) { list += stopHTML(t, L.id, "stop-"); n++; }
+      }
+      if (!n) { continue; }
+      shown += n;
+      var light = LIGHT_LINES[L.id] ? " on-light" : "";
+      html += '<section class="line" id="line-' + L.id + '" style="--lc:' + lineVar(L.id) + '">' +
+        '<div class="line-head"><div class="line-badge' + light + '">' + svgIcon(L.icon) + '</div>' +
+        '<div><h2>' + esc(L.name) + '</h2><p>' + esc(L.desc) + '</p></div></div>' +
+        '<ol class="route">' + list + '</ol></section>';
+    }
+
+    if (!shown) {
+      var what = state.q ? "« " + esc(state.q) + " »" : "ce filtre";
+      html = '<div class="empty"><strong>Aucun outil ne correspond à ' + what + '.</strong>' +
+        'Essayez un autre mot, ou affichez tous les outils.<br>' +
+        '<button type="button" class="chip" id="resetBtn">Tout afficher</button></div>';
+    }
+
+    document.getElementById("lines").innerHTML = html;
+    var total = DATA.tools.length;
+    document.getElementById("count").textContent = shown === total
+      ? total + " outils sur " + DATA.lines.length + " lignes"
+      : shown + " outil" + (shown > 1 ? "s" : "") + " sur " + total;
+    dimMap();
+  }
+
+  /* ---------- interactions ---------- */
+  function flash(el){
+    el.className = el.className.replace(/\s*flash/g, "") + " flash";
+    setTimeout(function(){ el.className = el.className.replace(/\s*flash/g, ""); }, 1400);
+  }
+
+  function resetFilters(){
+    state.q = ""; state.mode = "all";
+    document.getElementById("q").value = "";
+    setChips();
+    render();
+  }
+
+  function setChips(){
+    var chips = document.querySelectorAll(".filters .chip");
+    for (var i = 0; i < chips.length; i++) {
+      chips[i].setAttribute("aria-pressed", chips[i].getAttribute("data-mode") === state.mode ? "true" : "false");
+    }
+  }
+
+  document.addEventListener("click", function(e){
+    var el = e.target;
+    while (el && el !== document && !el.getAttribute("data-fav") && !el.getAttribute("data-goto-stop") &&
+           !el.getAttribute("data-goto-line") && !el.getAttribute("data-mode") && el.id !== "resetBtn") {
+      el = el.parentNode;
+    }
+    if (!el || el === document) { return; }
+
+    if (el.id === "resetBtn") { resetFilters(); return; }
+
+    var mode = el.getAttribute("data-mode");
+    if (mode) { state.mode = mode; setChips(); render(); return; }
+
+    var favId = el.getAttribute("data-fav");
+    if (favId) {
+      var idx = favs.indexOf(favId);
+      if (idx === -1) { favs.push(favId); } else { favs.splice(idx, 1); }
+      saveFavs();
+      render();
+      var again = document.querySelector('[data-fav="' + favId + '"]');
+      if (again) { again.focus(); }
+      return;
+    }
+
+    var stopId = el.getAttribute("data-goto-stop");
+    if (stopId) {
+      if (!matches(toolById[stopId])) { resetFilters(); }
+      var target = document.getElementById("stop-" + stopId);
+      if (target) {
+        target.scrollIntoView({ block: "center" });
+        flash(target);
+        var link = target.querySelector("h3 a");
+        if (link) { link.focus({ preventScroll: true }); }
+      }
+      return;
+    }
+
+    var lineId = el.getAttribute("data-goto-line");
+    if (lineId) {
+      var sec = document.getElementById("line-" + lineId);
+      if (!sec) { resetFilters(); sec = document.getElementById("line-" + lineId); }
+      if (sec) { sec.scrollIntoView({ block: "start" }); }
+    }
+  });
+
+  var qInput = document.getElementById("q");
+  qInput.addEventListener("input", function(){ state.q = qInput.value.replace(/^\s+|\s+$/g, ""); render(); });
+  qInput.addEventListener("keydown", function(e){
+    if (e.key === "Escape") { qInput.value = ""; state.q = ""; render(); qInput.blur(); }
+    if (e.key === "Enter") {
+      var first = document.querySelector("#lines .stop h3 a");
+      if (first) { first.focus(); }
+    }
+  });
+  document.addEventListener("keydown", function(e){
+    var tag = (document.activeElement && document.activeElement.tagName) || "";
+    if (e.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") { e.preventDefault(); qInput.focus(); }
+  });
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem(THEME_KEY); if (saved === "light" || saved === "dark") { root.setAttribute("data-theme", saved); } } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", function(){
+    var current = root.getAttribute("data-theme");
+    if (!current) {
+      current = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+    }
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  });
+
+  renderMap();
+  render();
+})();
+</script>
+</body>
+</html>
