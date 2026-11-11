@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -267,7 +267,7 @@ a{color:inherit}
   "lines": [
     {"id":"concevoir","name":"Concevoir","desc":"Bâtir séquences et séances à partir du programme 2025.","icon":"compass"},
     {"id":"animer","name":"Animer & évaluer","desc":"Faire vivre la classe et suivre les progrès.","icon":"spark"},
-    {"id":"ressources","name":"Ressources & culture","desc":"Trouver des supports et des repères didactiques.","icon":"book"},
+    {"id":"ressources","name":"Ressources & culture","desc":"Trouver des supports authentiques et de quoi les didactiser.","icon":"book"},
     {"id":"inclusion","name":"Inclusion & bien-être","desc":"Adapter pour chaque élève, au-delà de l’anglais.","icon":"heart"},
     {"id":"former","name":"Se former","desc":"Pour les stagiaires, les étudiants MEEF et leurs tuteurs.","icon":"cap"}
   ],
@@ -284,7 +284,7 @@ a{color:inherit}
     {"id":"skillpop","line":"animer","name":"Skillpop","short":"Skillpop","desc":"Évaluer par compétences et suivre le profil de chaque élève sous forme de radar.","url":"https://brot2you.github.io/Skillpop/","tags":["Évaluation","CECRL"]},
 
     {"id":"culture","line":"ressources","name":"Culture Corner","short":"Culture Corner","desc":"Plus de 1 100 ressources culturelles classées par niveau, de la 6e à la terminale, et par axe du programme.","url":"https://brot2you.github.io/Culture-Corner/","tags":["Collège","Lycée","Culture"]},
-    {"id":"didalangues","line":"ressources","name":"DidaLangues","short":"DidaLangues","desc":"Plus de 100 fiches de didactique : approches, activités langagières, auteurs clés, évaluation, numérique.","url":"https://brot2you.github.io/DidaLangues/","tags":["Didactique","MEEF"]},
+    {"id":"didalangues","line":"former","name":"DidaLangues","short":"DidaLangues","desc":"Plus de 100 fiches de didactique : approches, activités langagières, auteurs clés, évaluation, numérique.","url":"https://brot2you.github.io/DidaLangues/","tags":["Didactique","MEEF"]},
     {"id":"docadida","line":"ressources","name":"Docadida sur Pearltrees","short":"Docadida","desc":"Une collection de ressources pour didactiser un document authentique, rangée sur Pearltrees.","url":"https://www.pearltrees.com/t/anglais/docadida-ressources-didactiser/id39113460","tags":["Externe","Didactique"]},
 
     {"id":"dyscollege","line":"inclusion","name":"DysCollège","short":"DysCollège","desc":"8 profils dys et 8 disciplines, plus de 300 conseils sourcés et un adaptateur de texte en direct.","url":"https://brot2you.github.io/Dys-College/","tags":["Toutes matières","Dys"]},
@@ -303,7 +303,6 @@ a{color:inherit}
 
   var DATA = JSON.parse(document.getElementById("data").textContent);
   var FAV_KEY = "teacherline-favs";
-  var THEME_KEY = "teacherline-theme";
   var LIGHT_LINES = { former: true };
 
   var ICONS = {
@@ -535,7 +534,7 @@ a{color:inherit}
 
   /* ---------- theme ---------- */
   var root = document.documentElement;
-  try { var saved = localStorage.getItem(THEME_KEY); if (saved === "light" || saved === "dark") { root.setAttribute("data-theme", saved); } } catch (e) {}
+  root.setAttribute("data-theme", "light");
   document.getElementById("themeBtn").addEventListener("click", function(){
     var current = root.getAttribute("data-theme");
     if (!current) {
@@ -543,7 +542,6 @@ a{color:inherit}
     }
     var next = current === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
-    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
   });
 
   renderMap();
