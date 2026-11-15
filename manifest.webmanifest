@@ -1,0 +1,22 @@
+{
+  "id": "./",
+  "name": "Teacher Line — les outils BROT2YOU pour profs d’anglais",
+  "short_name": "Teacher Line",
+  "description": "Toutes les applis BROT2YOU pour profs d’anglais, rangées par ligne : concevoir, animer et évaluer, ressources, inclusion, se former.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#E7EBF0",
+  "theme_color": "#13203F",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "pwa/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "pwa/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "pwa/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "pwa/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
