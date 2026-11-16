@@ -26,6 +26,7 @@
   --c-ressources:#00782A;
   --c-inclusion:#9B0058;
   --c-former:#F2A900;
+  --c-evaluer:#00A0E2;
   --c-favoris:#13203F;
   color-scheme:light;
 }
@@ -266,7 +267,8 @@ a{color:inherit}
 {
   "lines": [
     {"id":"concevoir","name":"Concevoir","desc":"Bâtir séquences et séances à partir du programme 2025.","icon":"compass"},
-    {"id":"animer","name":"Animer & évaluer","desc":"Faire vivre la classe et suivre les progrès.","icon":"spark"},
+    {"id":"animer","name":"Animer","desc":"Faire vivre la classe : jeux, quiz, travail de groupe, projets.","icon":"spark"},
+    {"id":"evaluer","name":"Évaluer","desc":"Suivre les progrès par compétences et comprendre les erreurs.","icon":"gauge"},
     {"id":"ressources","name":"Ressources & culture","desc":"Trouver des supports authentiques et de quoi les didactiser.","icon":"book"},
     {"id":"inclusion","name":"Inclusion & bien-être","desc":"Adapter pour chaque élève, au-delà de l’anglais.","icon":"heart"},
     {"id":"former","name":"Se former","desc":"Pour les stagiaires, les étudiants MEEF et leurs tuteurs.","icon":"cap"}
@@ -286,8 +288,9 @@ a{color:inherit}
     {"id":"sonopop","line":"animer","name":"Sonopop","short":"Sonopop","desc":"Une table de mixage pour la classe : vos propres sons et jingles rangés en boutons et en catégories, à déclencher d’un clic, même hors ligne.","url":"https://brot2you.github.io/Sonopop/","tags":["Soundboard","TNI","Hors ligne"]},
     {"id":"webtv","line":"animer","name":"WebTV Studio","short":"WebTV Studio","desc":"La rédaction de votre WebTV scolaire : les élèves écrivent leurs articles, vous montez les émissions et vous les lisez au prompteur le jour du tournage.","url":"https://brot2you.github.io/Webtv-Studio/","tags":["Projet","Oral","Prompteur","Espace prof"]},
     {"id":"teamquest","line":"animer","name":"Team Quest","short":"Team Quest","desc":"Organiser le travail de groupe : rôles tirés au sort (Team Leader, Timekeeper, Spokesperson…), une mission par équipe, des outils pour chaque rôle et des badges. Une tablette par équipe suffit.","url":"https://brot2you.github.io/Team-quest/","tags":["Travail de groupe","Rôles","Tablette"]},
-    {"id":"skillpop","line":"animer","name":"Skillpop","short":"Skillpop","desc":"Évaluer par compétences et suivre le profil de chaque élève sous forme de radar.","url":"https://brot2you.github.io/Skillpop/","tags":["Évaluation","CECRL"]},
-    {"id":"errordetective","line":"animer","name":"Error Detective","short":"Error Detective","desc":"Transformer les erreurs des élèves en enquêtes : comprendre d’où vient l’erreur, puis choisir la remédiation et les exercices qui vont avec. Programmes 2025.","url":"https://brot2you.github.io/Error-Detective/","tags":["Collège","Lycée","Erreurs","Remédiation"]},
+    {"id":"flashpop","line":"animer","name":"FlashPop","short":"FlashPop","desc":"Créer ses paquets de cartes mémoire et les transformer en jeux de révision, à partager avec les élèves. Langues, sciences, maths. Gratuit, sans compte.","url":"https://brot2you.github.io/Flashpop/","tags":["Flashcards","Révisions","Partage élèves"]},
+    {"id":"skillpop","line":"evaluer","name":"Skillpop","short":"Skillpop","desc":"Évaluer par compétences et suivre le profil de chaque élève sous forme de radar.","url":"https://brot2you.github.io/Skillpop/","tags":["Évaluation","CECRL"]},
+    {"id":"errordetective","line":"evaluer","name":"Error Detective","short":"Error Detective","desc":"Transformer les erreurs des élèves en enquêtes : comprendre d’où vient l’erreur, puis choisir la remédiation et les exercices qui vont avec. Programmes 2025.","url":"https://brot2you.github.io/Error-Detective/","tags":["Collège","Lycée","Erreurs","Remédiation"]},
 
     {"id":"culture","line":"ressources","name":"Culture Corner","short":"Culture Corner","desc":"Plus de 1 100 ressources culturelles classées par niveau, de la 6e à la terminale, et par axe du programme.","url":"https://brot2you.github.io/Culture-Corner/","tags":["Collège","Lycée","Culture"]},
     {"id":"didalangues","line":"former","name":"DidaLangues","short":"DidaLangues","desc":"Plus de 100 fiches de didactique : approches, activités langagières, auteurs clés, évaluation, numérique.","url":"https://brot2you.github.io/DidaLangues/","tags":["Didactique","MEEF"]},
@@ -310,13 +313,14 @@ a{color:inherit}
 
   var DATA = JSON.parse(document.getElementById("data").textContent);
   var FAV_KEY = "teacherline-favs";
-  var LIGHT_LINES = { former: true };
+  var LIGHT_LINES = { former: true, evaluer: true };
 
   var ICONS = {
     compass: '<path d="M4 20l4-1L19 8l-3-3L5 16zM14 7l3 3"/>',
     spark: '<path d="M12 3l2.2 5.6L20 9.5l-4.5 3.9 1.4 5.8L12 16.1 7.1 19.2l1.4-5.8L4 9.5l5.8-.9z"/>',
     book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>',
     heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+    gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/>',
     cap: '<path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
     star: '<path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/>'
   };
