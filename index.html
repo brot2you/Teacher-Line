@@ -138,21 +138,22 @@ a{color:inherit}
 
 /* ---------- Lines (sections) ---------- */
 .line{margin-top:40px}
+.line{--rail-x:24px;--rail-w:8px;--dot:24px;--dot-b:6px;--gap:52px}
 .line-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.line-badge{width:48px;height:48px;border-radius:50%;background:var(--lc);color:#fff;display:grid;place-items:center;flex:none}
+.line-badge{width:calc(var(--rail-x) * 2);height:calc(var(--rail-x) * 2);border-radius:50%;background:var(--lc);color:#fff;display:grid;place-items:center;flex:none}
 .line-badge.on-light{color:#13203F}
 .line-badge svg{width:24px;height:24px}
 .line-head h2{margin:0;font-size:26px;font-weight:900;letter-spacing:-.015em;line-height:1.1}
 .line-head p{margin:2px 0 0;color:var(--muted);font-size:15px}
-.route{position:relative;padding-left:52px;list-style:none;margin:0}
-.route::before{content:"";position:absolute;left:20px;top:14px;bottom:14px;width:8px;border-radius:4px;background:var(--lc)}
+.route{position:relative;padding-left:var(--gap);list-style:none;margin:0}
+.route::before{content:"";position:absolute;left:calc(var(--rail-x) - var(--rail-w) / 2);top:14px;bottom:14px;width:var(--rail-w);border-radius:calc(var(--rail-w) / 2);background:var(--lc)}
 .line.fav .route::before{background:repeating-linear-gradient(180deg,var(--lc) 0 14px,transparent 14px 22px)}
 .stop{
   position:relative;display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;
   background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:16px 16px 16px 20px;margin-bottom:10px;
   transition:box-shadow .3s, border-color .3s
 }
-.stop::before{content:"";position:absolute;left:-41px;top:50%;margin-top:-12px;width:24px;height:24px;border-radius:50%;background:var(--surface);border:6px solid var(--lc)}
+.stop::before{content:"";position:absolute;left:calc(var(--rail-x) - var(--gap) - 1px);top:50%;transform:translate(-50%,-50%);width:var(--dot);height:var(--dot);border-radius:50%;background:var(--surface);border:var(--dot-b) solid var(--lc)}
 .stop.flash{border-color:var(--lc);box-shadow:0 0 0 4px var(--lc)}
 .stop h3{margin:0;font-size:19px;font-weight:800;line-height:1.2;letter-spacing:-.005em}
 .stop h3 a{text-decoration:none}
@@ -192,13 +193,22 @@ a{color:inherit}
   .map-legend{display:flex}
   .stop{grid-template-columns:1fr;padding:14px}
   .acts{justify-content:space-between}
-  .route{padding-left:42px}
-  .route::before{left:15px;width:7px}
-  .stop::before{left:-36px;width:22px;height:22px;margin-top:-11px;border-width:5px}
+  .line{--rail-x:20px;--rail-w:6px;--dot:22px;--dot-b:5px;--gap:44px}
+  .line-badge svg{width:20px;height:20px}
   .count{margin-left:0;width:100%}
   .line-head h2{font-size:22px}
 }
 </style>
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13203F">
+<link rel="icon" type="image/png" sizes="32x32" href="pwa/favicon-32.png">
+<link rel="apple-touch-icon" href="pwa/apple-touch-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Teacher Line">
+<!-- /PWA -->
 </head>
 <body>
 
@@ -560,5 +570,6 @@ a{color:inherit}
   render();
 })();
 </script>
+<script src="pwa/pwa.js"></script>
 </body>
 </html>
