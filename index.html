@@ -23,6 +23,7 @@
   --focus:#F2A900;
   --c-concevoir:#DC241F;
   --c-animer:#1E3FB8;
+  --c-jouer:#6950A1;
   --c-ressources:#00782A;
   --c-inclusion:#9B0058;
   --c-former:#F2A900;
@@ -42,6 +43,7 @@
     --bar:#080D1C;
     --bar-ink:#FFFFFF;
     --c-animer:#4A6CF0;
+    --c-jouer:#8C74CC;
     --c-ressources:#1FA34E;
     --c-inclusion:#D0347F;
     --c-favoris:#E9EDF5;
@@ -59,6 +61,7 @@
   --bar:#080D1C;
   --bar-ink:#FFFFFF;
   --c-animer:#4A6CF0;
+  --c-jouer:#8C74CC;
   --c-ressources:#1FA34E;
   --c-inclusion:#D0347F;
   --c-favoris:#E9EDF5;
@@ -187,6 +190,7 @@ a{color:inherit}
 .foot a{color:#fff;font-weight:700}
 
 @media (max-width:640px){
+  html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 150px)}
   .hero{padding-top:28px}
   .hero p{font-size:16px}
   .search kbd{display:none}
@@ -277,7 +281,8 @@ a{color:inherit}
 {
   "lines": [
     {"id":"concevoir","name":"Concevoir","desc":"Bâtir séquences et séances à partir du programme 2025.","icon":"compass"},
-    {"id":"animer","name":"Animer","desc":"Faire vivre la classe : jeux, quiz, travail de groupe, projets.","icon":"spark"},
+    {"id":"animer","name":"Gérer la classe","desc":"Organiser l’espace, les groupes, l’ambiance et les projets.","icon":"spark"},
+    {"id":"jouer","name":"Jeux & quiz","desc":"Réviser et faire parler la classe en jouant, au tableau ou sur les écrans des élèves.","icon":"dice"},
     {"id":"evaluer","name":"Évaluer","desc":"Suivre les progrès par compétences et comprendre les erreurs.","icon":"gauge"},
     {"id":"ressources","name":"Ressources & culture","desc":"Trouver des supports authentiques et de quoi les didactiser.","icon":"book"},
     {"id":"inclusion","name":"Inclusion & bien-être","desc":"Adapter pour chaque élève, au-delà de l’anglais.","icon":"heart"},
@@ -293,13 +298,14 @@ a{color:inherit}
 
     {"id":"plan","line":"animer","name":"Plan de classe","short":"Plan de classe","desc":"Placer tables en îlots, duos ou rangées, glisser les élèves avec leur photo, gérer plusieurs classes et imprimer.","url":"https://brot2you.github.io/Plan-de-classe/","tags":["Toutes matières","Smartphone"]},
     {"id":"jars","line":"animer","name":"Class Reward Jars","short":"Reward Jars","desc":"Remplir des jarres d’étoiles collectives pour valoriser les bonnes actions de la classe.","url":"https://brot2you.github.io/Class-Reward-Jar/","tags":["Gestion de classe","TNI"]},
-    {"id":"studio","line":"animer","name":"BROT2YOU Studio","short":"BROT2YOU Studio","desc":"Fabriquer ses jeux de classe en quelques minutes : roue, cartes, quiz à projeter.","url":"https://brot2you.github.io/Brot2you-Studio/#/","tags":["Jeux","TNI"]},
-    {"id":"quizarena","line":"animer","name":"Quiz Arena","short":"Quiz Arena","desc":"Lancer un quiz en direct : les élèves rejoignent la partie sur leur appareil et répondent en temps réel, comme sur Kahoot.","url":"https://brot2you.github.io/Quiz-Arena/","tags":["Multijoueur","Jeux","TNI"]},
+    {"id":"studio","line":"jouer","name":"BROT2YOU Studio","short":"BROT2YOU Studio","desc":"Fabriquer ses jeux de classe en quelques minutes : roue, cartes, quiz à projeter.","url":"https://brot2you.github.io/Brot2you-Studio/#/","tags":["Jeux","TNI"]},
+    {"id":"quizarena","line":"jouer","name":"Quiz Arena","short":"Quiz Arena","desc":"Lancer un quiz en direct : les élèves rejoignent la partie sur leur appareil et répondent en temps réel, comme sur Kahoot.","url":"https://brot2you.github.io/Quiz-Arena/","tags":["Multijoueur","Jeux","TNI"]},
     {"id":"sonopop","line":"animer","name":"Sonopop","short":"Sonopop","desc":"Une table de mixage pour la classe : vos propres sons et jingles rangés en boutons et en catégories, à déclencher d’un clic, même hors ligne.","url":"https://brot2you.github.io/Sonopop/","tags":["Soundboard","TNI","Hors ligne"]},
     {"id":"webtv","line":"animer","name":"WebTV Studio","short":"WebTV Studio","desc":"La rédaction de votre WebTV scolaire : les élèves écrivent leurs articles, vous montez les émissions et vous les lisez au prompteur le jour du tournage.","url":"https://brot2you.github.io/Webtv-Studio/","tags":["Projet","Oral","Prompteur","Espace prof"]},
     {"id":"teamquest","line":"animer","name":"Team Quest","short":"Team Quest","desc":"Organiser le travail de groupe : rôles tirés au sort (Team Leader, Timekeeper, Spokesperson…), une mission par équipe, des outils pour chaque rôle et des badges. Une tablette par équipe suffit.","url":"https://brot2you.github.io/Team-quest/","tags":["Travail de groupe","Rôles","Tablette"]},
-    {"id":"flashpop","line":"animer","name":"FlashPop","short":"FlashPop","desc":"Créer ses paquets de cartes mémoire et les transformer en jeux de révision, à partager avec les élèves. Langues, sciences, maths. Gratuit, sans compte.","url":"https://brot2you.github.io/Flashpop/","tags":["Flashcards","Révisions","Partage élèves"]},
-    {"id":"bingopop","line":"animer","name":"Bingo Pop","short":"Bingo Pop","desc":"Créer ses boules (mots, images, questions), lancer le tirage au tableau et générer des cartons à imprimer ou à jouer sur téléphone en mode élèves.","url":"https://brot2you.github.io/Bingo-pop/","tags":["Jeux","TNI","Cartons imprimables"]},
+    {"id":"flashpop","line":"jouer","name":"FlashPop","short":"FlashPop","desc":"Créer ses paquets de cartes mémoire et les transformer en jeux de révision, à partager avec les élèves. Langues, sciences, maths. Gratuit, sans compte.","url":"https://brot2you.github.io/Flashpop/","tags":["Flashcards","Révisions","Partage élèves"]},
+    {"id":"bingopop","line":"jouer","name":"Bingo Pop","short":"Bingo Pop","desc":"Créer ses boules (mots, images, questions), lancer le tirage au tableau et générer des cartons à imprimer ou à jouer sur téléphone en mode élèves.","url":"https://brot2you.github.io/Bingo-pop/","tags":["Jeux","TNI","Cartons imprimables"]},
+    {"id":"buzzarena","line":"jouer","name":"Buzz Arena","short":"Buzz Arena","desc":"Transformer les écrans des élèves en buzzers : vous lancez la partie, ils rejoignent avec un code ou un QR code, en solo ou par équipes. Le premier qui buzze a la main.","url":"https://brot2you.github.io/Buzz-arena/","tags":["Multijoueur","Buzzer","Équipes","Smartphone"]},
     {"id":"skillpop","line":"evaluer","name":"Skillpop","short":"Skillpop","desc":"Évaluer par compétences et suivre le profil de chaque élève sous forme de radar.","url":"https://brot2you.github.io/Skillpop/","tags":["Évaluation","CECRL"]},
     {"id":"errordetective","line":"evaluer","name":"Error Detective","short":"Error Detective","desc":"Transformer les erreurs des élèves en enquêtes : comprendre d’où vient l’erreur, puis choisir la remédiation et les exercices qui vont avec. Programmes 2025.","url":"https://brot2you.github.io/Error-Detective/","tags":["Collège","Lycée","Erreurs","Remédiation"]},
 
@@ -331,6 +337,7 @@ a{color:inherit}
     spark: '<path d="M12 3l2.2 5.6L20 9.5l-4.5 3.9 1.4 5.8L12 16.1 7.1 19.2l1.4-5.8L4 9.5l5.8-.9z"/>',
     book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>',
     heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+    dice: '<rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.2"/><circle cx="15" cy="15" r="1.2"/><circle cx="15" cy="9" r="1.2"/><circle cx="9" cy="15" r="1.2"/>',
     gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/>',
     cap: '<path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
     star: '<path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/>'
